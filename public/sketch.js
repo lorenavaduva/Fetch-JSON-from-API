@@ -1,6 +1,17 @@
+
+let flag = 0;
+
 document.getElementById("submit").addEventListener("click", async (event) => {
   const dateControl = document.getElementById("start");
+  var table = document.getElementById("myTable");
+  
+  if( flag !=0)
+  {
+    table.innerHTML = "";
 
+  
+
+  }
   //const start_date = dateControl.value.split('-');// year month day
   //console.log(dateControl.valueAsNumber);
   //console.log(dateControl.value);
@@ -26,7 +37,7 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   //console.log(${start_date});
 
   let brand_name;
-  var table = document.getElementById("myTable");
+  
   brand_json.result.forEach(async (element) => {
     brand_name = element.brandname;
     console.log( brand_name);
@@ -35,7 +46,7 @@ document.getElementById("submit").addEventListener("click", async (event) => {
     const Data_response = await fetch(api_url);
     const brand_data_json = await Data_response.json();
     console.log(brand_data_json.result);
-    console.log( element.brandname); 
+    console.log( element.brandname);
     var row = `<tr>
 							<td>${brand_data_json.result.brandname}</td>
 							<td>${brand_data_json.result.profiles.length}</td>
@@ -43,6 +54,7 @@ document.getElementById("submit").addEventListener("click", async (event) => {
               <td>${brand_data_json.result.kpis.total_engagement.current_period.value}</td>
 					  </tr>`;
     table.innerHTML += row;
+    flag = 1;
      
     //console.log("total engagement");
     //console.log(brand_data_json.result.kpis.total_engagement.current_period.value
