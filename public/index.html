@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Get brand data!</title>
-  </head>
 
-  <body>
-    <!--Bootstrap for CSS to make it pretty-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="style.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <h1>Do you want some of that juicy data ?</h1>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="shortcut icon" href="#">
 
- 
-  </body>
+  <title>Get brand data!</title>
+</head>
+
+<body>
+  <!--Bootstrap for CSS to make it pretty-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <h1>Do you want some of that juicy data ?</h1>
+
+  <label for="start">Start date:</label>
+
+  <input type="date" id="start" min="2018-01-01" max="2021-03-31" />
+
+  <input type="date" id="end" min="2018-01-01" max="2021-03-31" />
+
+  <button id="submit">Submit</button>
+
+  <table class="table table-striped">
+    <tr class="bg-info">
+      <th>Brand Name</th>
+      <th>Total Profiles</th>
+      <th>Total Followers</th>
+      <th>Total Engagement</th>
+    </tr>
+
+    <tbody id="myTable"></tbody>
+
+    </tbody>
+  </table>
+
+  <script src="sketch.js"></script>
+</body>
+
 </html>

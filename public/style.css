@@ -8,3 +8,18 @@ h1 {
 
   font-weight: bold;
 }
+label {
+  display: block;
+  font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+  margin: .4rem 0;
+}
+
+th{
+  background: #841f88 !important;
+  color: #daa3ca!important;
+}
+

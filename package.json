@@ -4,7 +4,9 @@
   "description": "Task pt interviu",
   "main": "Brand_Compare_Backend.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {},
   "scripts": {
