@@ -25,28 +25,25 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   console.log(end_date);
   //console.log(${start_date});
 
-
-
-
   let brand_name;
-  var table = document.getElementById('myTable');
+  var table = document.getElementById("myTable");
   brand_json.result.forEach(async (element) => {
     brand_name = element.brandname;
-    //console.log( brand_name);
-
+    console.log( brand_name);
 
     const api_url = `/data/${start_date}/${end_date}/${brand_name}`;
     const Data_response = await fetch(api_url);
     const brand_data_json = await Data_response.json();
-
+    console.log(brand_data_json.result);
+    console.log( element.brandname); 
     var row = `<tr>
-							<td>${brand_name}</td>
+							<td>${brand_data_json.result.brandname}</td>
 							<td>${brand_data_json.result.profiles.length}</td>
 							<td>${brand_data_json.result.kpis.total_fans.current_period.value}</td>
               <td>${brand_data_json.result.kpis.total_engagement.current_period.value}</td>
-					  </tr>`
-    table.innerHTML += row
-
+					  </tr>`;
+    table.innerHTML += row;
+     
     //console.log("total engagement");
     //console.log(brand_data_json.result.kpis.total_engagement.current_period.value
   });
@@ -56,15 +53,11 @@ document.getElementById("submit").addEventListener("click", async (event) => {
 
   //console.log("total profiles");
   //console.log(brand_data_json.result.profiles.length);
-  console.log("Successfully imported brand data.");
+  //console.log("Successfully imported brand data.");
   //plang, hai lori poti
 
-
-
-  //console.log(brand_data_json.result);
+  
 });
-
-
 
 /*async function testing() {
   console.log("Importing brands...");
