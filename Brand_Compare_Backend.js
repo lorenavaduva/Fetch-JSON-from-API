@@ -30,17 +30,12 @@ app.get("/brands", async (request, response) => {
   response.json(jsonrpc);
 });
 
-app.get(
-  "/data/:start_date/:end_date/:brand_name",
-  async (request, response) => {
+app.get("/data/:start_date/:end_date/:brand_name",async (request, response) => {
     const StartDate = Number(request.params.start_date);
     const EndDate = Number(request.params.end_date);
-
     const BrandName = request.params.brand_name;
 
     const fetchResponse = await fetch("https://app.socialinsider.io/api", {
-      // fetch getbrands data from API
-
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,10 +53,23 @@ app.get(
       }),
     });
     const jsonrpc = await fetchResponse.json();
-    console.log(jsonrpc);
+    //console.log(jsonrpc);
     response.json(jsonrpc);
   }
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*app.post('/api', (request, response) => {
     const data = request.body;
