@@ -15,7 +15,11 @@ label {
 
 input,
 label {
-  margin: .4rem 0;
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-color: antiquewhite!important;
 }
 
 th{

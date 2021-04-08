@@ -24,9 +24,10 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   if ( start_date > end_date)
   {
     console.log('error');
+    return false;
     
   }
-  else
+ 
   
   //console.log(dateControl2.valueAsNumber);
 
@@ -79,6 +80,7 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   //console.log("total profiles");
   //console.log(brand_data_json.result.profiles.length);
   //console.log("Successfully imported brand data.");
+  
   //plang, hai lori poti
 
   
