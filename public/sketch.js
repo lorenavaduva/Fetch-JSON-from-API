@@ -1,17 +1,8 @@
-
 let flag = 0;
 
 document.getElementById("submit").addEventListener("click", async (event) => {
-  
   var table = document.getElementById("myTable");
-  
-  if( flag !=0)
-  {
-    table.innerHTML = "";
 
-  
-
-  }
   //const start_date = dateControl.value.split('-');// year month day
   //console.log(dateControl.valueAsNumber);
   //console.log(dateControl.value);
@@ -21,14 +12,11 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   let start_date = dateControl.valueAsNumber;
   let end_date = dateControl2.valueAsNumber;
 
-  if ( start_date > end_date)
-  {
-    console.log('error');
+  if (start_date > end_date) {
+    console.log("error");
     return false;
-    
   }
- 
-  
+
   //console.log(dateControl2.valueAsNumber);
 
   console.log("Importing brands...");
@@ -44,32 +32,45 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   console.log(number_of_brands);
   //console.log(start_date);
 
-  
   //console.log(end_date);
   //console.log(${start_date});
 
   let brand_name;
-  
-  for( i=0; i < number_of_brands; i++){
 
-  
+  for (i = 0; i < number_of_brands; i++) {
     brand_name = brand_json.result[i].brandname;
-    console.log( brand_name);
+    console.log(brand_name);
 
     const api_url = `/data/${start_date}/${end_date}/${brand_name}`;
     const Data_response = await fetch(api_url);
     const brand_data_json = await Data_response.json();
     console.log(brand_data_json.result);
-    //console.log( element.brandname);
-    var row = `<tr>
+
+    if (flag == 1) {
+      var x = document.getElementById("myTable").rows[i].cells;
+
+      x[1].innerHTML = `${brand_data_json.result.profiles.length}`;
+      x[2].innerHTML = `${brand_data_json.result.kpis.total_fans.current_period.value}`;
+      x[3].innerHTML = `${brand_data_json.result.kpis.total_engagement.current_period.value}`;
+    } else {
+      var row = `<tr>
 							<td>${brand_data_json.result.brandname}</td>
 							<td>${brand_data_json.result.profiles.length}</td>
 							<td>${brand_data_json.result.kpis.total_fans.current_period.value}</td>
               <td>${brand_data_json.result.kpis.total_engagement.current_period.value}</td>
 					  </tr>`;
-    table.innerHTML += row;
-    flag = 1;
-     
+      table.innerHTML += row;
+    }
+
+    //console.log( element.brandname);
+    /*var row = `<tr>
+							<td>${brand_data_json.result.brandname}</td>
+							<td>${brand_data_json.result.profiles.length}</td>
+							<td>${brand_data_json.result.kpis.total_fans.current_period.value}</td>
+              <td>${brand_data_json.result.kpis.total_engagement.current_period.value}</td>
+					  </tr>`;
+    table.innerHTML += row; */
+
     //console.log("total engagement");
     //console.log(brand_data_json.result.kpis.total_engagement.current_period.value
   }
@@ -80,10 +81,8 @@ document.getElementById("submit").addEventListener("click", async (event) => {
   //console.log("total profiles");
   //console.log(brand_data_json.result.profiles.length);
   //console.log("Successfully imported brand data.");
-  
+  flag = 1;
   //plang, hai lori poti
-
-  
 });
 
 /*async function testing() {
